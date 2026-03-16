@@ -40,12 +40,13 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+![Winning game screenshot](image-2.png)
 
 ### Challenge 1: Edge-Case Test Results
 
-- [ ] [Insert a screenshot of pytest running with all 12 tests passing here]
+![pytest 12 tests passing](image-1.png)
 
 ## 🚀 Stretch Features
 
 - [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]
+
