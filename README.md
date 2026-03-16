@@ -25,13 +25,26 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+**Purpose:** A number guessing game where the player tries to guess a secret number within a limited number of attempts, with hints after each guess.
+
+**Bugs found:**
+- Hints were backwards — "Go Higher" when you needed to go lower, and vice versa
+- After losing, clicking New Game left the game stuck on the game over screen
+- Entering the same number twice gave different hints each time due to a type-flip bug in the original code
+
+**Fixes applied:**
+- Corrected the hint messages in `check_guess` inside `logic_utils.py`
+- Added `st.session_state.status = "playing"` (plus history and score resets) to the New Game button handler
+- Removed the even/odd attempt type-conversion that was converting the secret to a string on every other guess
+- Refactored all game logic out of `app.py` into `logic_utils.py`
 
 ## 📸 Demo
 
 - [ ] [Insert a screenshot of your fixed, winning game here]
+
+### Challenge 1: Edge-Case Test Results
+
+- [ ] [Insert a screenshot of pytest running with all 12 tests passing here]
 
 ## 🚀 Stretch Features
 
