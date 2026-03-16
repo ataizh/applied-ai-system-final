@@ -44,7 +44,7 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ### Challenge 1: Edge-Case Test Results
 
-![pytest 12 tests passing](image-1.png)
+![alt text](image-3.png)
 
 ## 🚀 Stretch Features
 
