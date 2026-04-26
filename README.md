@@ -158,6 +158,22 @@ The coach produces a structured response (strategy, number, confidence) for a sp
 
 **What I learned:** Passing outcomes with guesses was the critical fix. Without them, win rate was 10%. With them, it jumped to 90%. Context quality matters more than model capability for structured reasoning tasks.
 
+### Guardrail Behavior
+
+Both the AI Coach and chatbot include error guardrails. If the API key is missing or the API is unavailable, the system catches the exception and displays a clean warning instead of crashing:
+
+**Example — API key not set:**
+```
+AI Coach unavailable: GROQ_API_KEY is not set. Add it to your .env file.
+```
+
+**Example — API rate limit hit:**
+```
+AI Coach unavailable: API error: 429 RESOURCE_EXHAUSTED.
+```
+
+The game continues to function normally in both cases — the player can still guess, see hints, and track their score. All errors are also written to `coach.log` with timestamps for debugging.
+
 ---
 
 ## Reflection
