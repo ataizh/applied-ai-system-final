@@ -160,6 +160,16 @@ The coach produces a structured response (strategy, number, confidence) for a sp
 
 ---
 
+## Reflection
+
+Building this system taught me that **how you give an AI information matters more than which AI you use**. The coach used the same Llama 3.3 70B model throughout, but its win rate jumped from 10% to 90% purely because of a prompt change — adding outcome labels to each guess. The model was always capable of binary search reasoning; it just needed the right context to apply it. This shifted how I think about AI development: debugging a prompt is just as important as debugging code.
+
+The RAG chatbot reinforced this. A response grounded in retrieved knowledge feels more trustworthy and useful than a response generated from the model's memory alone, even when the model "knows" the answer. Making retrieval transparent — showing the player which sources were used — makes the system more responsible and easier to audit.
+
+The biggest problem-solving lesson was that AI failures are rarely random. Both major failures in this project (looping guesses, low win rate) had a clear, diagnosable root cause. Treating AI outputs like any other system output — something to measure, test, and trace — is what made them fixable.
+
+---
+
 ## Reflection and Ethics
 
 **Limitations and biases:**
