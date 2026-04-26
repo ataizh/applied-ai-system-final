@@ -1,5 +1,15 @@
 # Game Glitch Investigator — Applied AI System
 
+## Video Walkthrough
+
+[Watch the video walkthrough](#) <!-- Replace # with your video URL after recording -->
+
+## Portfolio Reflection
+
+This project demonstrates that I can take a working prototype and evolve it into a reliable, production-minded AI system. I didn't just add an API call — I measured performance (10% vs 90% win rate), diagnosed why it failed, fixed the root cause, and documented the results. I made deliberate architectural decisions: separating retrieval from generation, keeping game logic stateless and testable, and building graceful fallbacks so the system degrades safely when the API is unavailable. That loop of build → measure → debug → improve is what I bring to every system I work on.
+
+---
+
 ## Original Project
 
 This project is an extension of **Game Glitch Investigator** from Module 1 of AI110. The original project was a Streamlit number guessing game that had three intentional bugs: reversed Higher/Lower hints, a secret number that changed on every button click, and a broken New Game button. The goal was to find, fix, and test each bug, then refactor all game logic into a separate `logic_utils.py` module with a full pytest suite.
@@ -68,8 +78,11 @@ python -m streamlit run app.py
 # Unit tests
 pytest tests/test_game_logic.py -v
 
-# Reliability test (makes live API calls)
+# Reliability + scenario test harness (makes live API calls)
 python tests/test_reliability.py
+
+# RAG quality comparison — with vs without retrieval
+python tests/test_rag_quality.py
 ```
 
 ---
@@ -157,6 +170,18 @@ The coach produces a structured response (strategy, number, confidence) for a sp
 **What didn't:** One game was lost because the coach shifted to sequential guessing near the end of the range instead of bisecting. This reveals a limitation: the model occasionally drifts from pure binary search when the remaining range is small and the history is long.
 
 **What I learned:** Passing outcomes with guesses was the critical fix. Without them, win rate was 10%. With them, it jumped to 90%. Context quality matters more than model capability for structured reasoning tasks.
+
+### RAG Quality Comparison (`tests/test_rag_quality.py`)
+
+Runs 3 predefined questions with and without retrieval to show measurable improvement:
+
+| Question | Without RAG | With RAG |
+|---|---|---|
+| "What is binary search?" | Generic explanation | Step-by-step with exact numbers from knowledge base |
+| "How does scoring work?" | Incorrect ("score decreases with larger differences") | Correct exact formula from game_rules doc |
+| "One attempt left — what do I do?" | "Make an educated guess" | Specific midpoint advice from advanced_tips doc |
+
+**Result: RAG grounded 3/3 responses. Sources: strategies, math_tips, game_rules, advanced_tips.**
 
 ### Guardrail Behavior
 
