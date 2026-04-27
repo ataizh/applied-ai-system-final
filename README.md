@@ -136,7 +136,7 @@ The Gemini API free tier is unavailable in some regions (quota limit of 0). Groq
 In early testing the coach only received guess numbers without outcomes. This caused it to loop between the same numbers with a 10% win rate. Passing `"50 -> Too High, 25 -> Too Low"` instead of just `"50, 25"` gave the model the context it needs for binary search reasoning, raising the win rate to 90%.
 
 **Why keyword overlap for RAG instead of embeddings?**
-The knowledge base is small (3 files, ~15 paragraphs). A full vector database and embedding model would add significant overhead for marginal gain. Word overlap scoring is transparent, requires no additional dependencies, and is fast enough for real-time use. For a larger knowledge base, switching to sentence-transformers would be the natural next step.
+The knowledge base is small (4 files, ~20 paragraphs). A full vector database and embedding model would add significant overhead for marginal gain. Word overlap scoring is transparent, requires no additional dependencies, and is fast enough for real-time use. For a larger knowledge base, switching to sentence-transformers would be the natural next step.
 
 **Why separate `ai_coach.py` and `chatbot.py`?**
 The coach produces a structured response (strategy, number, confidence) for a specific game action. The chatbot maintains conversation history and answers open-ended questions. Separating them keeps each module focused and independently testable.
