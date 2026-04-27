@@ -2,7 +2,7 @@
 
 ## Video Walkthrough
 
-[Watch the video walkthrough](#) <!-- Replace # with your video URL after recording -->
+[Watch the video walkthrough](https://youtu.be/R6k98SykE30)
 
 ## Portfolio Reflection
 
